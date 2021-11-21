@@ -37,7 +37,7 @@ dependencies:
   get: ^4.1.4
   get_storage:
   rounded_loading_button: ^2.0.5
-  shimmer_animation: ^2.1.0+1
+  shimmer: ^2.0.0
   pull_to_refresh: ^2.0.0
 
 dev_dependencies:

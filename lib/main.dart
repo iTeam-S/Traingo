@@ -1,7 +1,8 @@
 
-//import 'package:buildeo/view/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:traingo/view/splash.dart';
+import 'package:traingo/view/home.dart';
 
 
 void main() async {
@@ -13,21 +14,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 2000), () {
-
+    Future.delayed(const Duration(milliseconds: 2500), () {
       Get.offNamed('/home');
     });
 
     return GetMaterialApp(
       theme: ThemeData(
-        primaryColor: const Color(0xffeb3446),
-        primarySwatch: Colors.red,
+        primaryColor: const Color(0xff0ec761),
+        primarySwatch: Colors.green,
         fontFamily: "ProductSans",
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const MyApp(),
+        '/': (context) => const SplashScreen(),
+        '/home': (context) => const HomeScreen(),
       },
     );
   }
