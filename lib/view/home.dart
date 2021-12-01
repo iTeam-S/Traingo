@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:traingo/view/widget/drawer.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -8,12 +9,19 @@ class HomeScreen extends StatefulWidget {
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
+
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+  AppDrawer drawer = AppDrawer();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+            key: _key,
+      drawer: drawer,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -36,7 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   IconButton(
                     icon: Icon(Icons.sort, color: Color(0xffffffff) ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _key.currentState!.openDrawer();
+                    },
                   ),
                   Text("Traingo", style: TextStyle(
                     // fontWeight: FontWeight.bold,
@@ -51,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  top:  MediaQuery.of(context).size.height * 0.81
+                  top:  MediaQuery.of(context).size.height * 0.835
                 ),
                 child: Column(
                   children: [
