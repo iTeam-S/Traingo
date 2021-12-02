@@ -14,7 +14,21 @@ class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child:
-            SafeArea(child: ListView(padding: EdgeInsets.zero, children: [])));
+        child: SafeArea(
+            child: ListView(padding: EdgeInsets.zero, children: [
+      Divider(),
+      ListTile(
+        leading: CircleAvatar(
+          backgroundColor: Color(0xff09101c),
+          child: Icon(Icons.do_not_touch),
+        ),
+        title: Text(
+            "Pocket mode"), //Route provisoire ,juste le temps que je test le pocket mode
+        onTap: () {
+          Get.toNamed('/pocket');
+        },
+      ),
+      Divider(),
+    ])));
   }
 }

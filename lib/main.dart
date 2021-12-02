@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
-        '/pocket': (context) => const PocketMode(),
+        '/pocket': (context) =>
+            const PocketMode(), //Route provisoire ,juste le temps que je test le pocket mode
       },
     );
   }

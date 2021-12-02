@@ -18,9 +18,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0xff09101c),
         key: _key,
         drawer: drawer,
         body: Container(
+          margin: EdgeInsets.only(top: Get.height * .04),
           decoration: BoxDecoration(
               gradient: LinearGradient(
             begin: Alignment.topCenter,
