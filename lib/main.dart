@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 2500), () {
-      Get.offNamed('/pocket');
+      Get.offNamed('/home');
     });
 
     return GetMaterialApp(
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "ProductSans",
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/pocket',
+      initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
