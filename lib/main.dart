@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:traingo/view/pocket.dart';
 import 'package:traingo/view/splash.dart';
 import 'package:traingo/view/home.dart';
-
 
 void main() async {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 2500), () {
-      Get.offNamed('/home');
+      Get.offNamed('/pocket');
     });
 
     return GetMaterialApp(
@@ -25,10 +24,11 @@ class MyApp extends StatelessWidget {
         fontFamily: "ProductSans",
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/pocket',
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
+        '/pocket': (context) => const PocketMode(),
       },
     );
   }

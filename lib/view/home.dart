@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
+// ignore: unused_import
 import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,15 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomLeft,
-            colors: [
-              Color(0xffeb3446),
-              Color(0xffeb3446),
-            ],
-          )
-        ),
+            gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xffeb3446),
+            Color(0xffeb3446),
+          ],
+        )),
         alignment: Alignment.center,
         // color: Color(0xffeb3446),
         child: Column(

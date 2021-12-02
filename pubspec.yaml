@@ -39,6 +39,7 @@ dependencies:
   rounded_loading_button: ^2.0.5
   shimmer: ^2.0.0
   pull_to_refresh: ^2.0.0
+  sensors_plus: ^1.2.1
 
 dev_dependencies:
   flutter_test:
