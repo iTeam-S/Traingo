@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:traingo/view/widget/drawer.dart';
+import 'package:traingo/view/widget/settings.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            key: _key,
+      key: _key,
       drawer: drawer,
       body: Container(
         decoration: BoxDecoration(
@@ -55,7 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),),
                   IconButton(
                     icon: Icon(Icons.settings, color: Color(0xffffffff)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(AppSettings());
+                    },
                   ),
                 ]
               ),
