@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PocketMode extends StatelessWidget {
   const PocketMode({Key? key}) : super(key: key);
@@ -9,16 +10,21 @@ class PocketMode extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("Click sur le boutton"),
+          SizedBox(
+            height: Get.height * .02,
+          ),
           Center(
             child: MaterialButton(
               shape: CircleBorder(),
+              padding: EdgeInsets.all(30),
               color: Colors.teal,
               onPressed: () {
                 print("okay");
               },
-              child: CircleAvatar(radius: 50, child: Icon(Icons.play_arrow)),
+              child: Text("OKAY"),
             ),
           ),
         ],
