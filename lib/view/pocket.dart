@@ -11,6 +11,7 @@ class PocketMode extends StatefulWidget {
 
 class _PocketModeState extends State<PocketMode> {
   bool _proximityValues = false;
+  late double x, y, z;
   @override
   void initState() {
     super.initState();
@@ -18,6 +19,14 @@ class _PocketModeState extends State<PocketMode> {
       setState(() {
         // event.getValue return true or false
         _proximityValues = event.getValue();
+        print(_proximityValues);
+        accelerometerEvents!.listen((AccelerometerEvent event) {
+          setState(() {
+            x = event.x;
+            y = event.y;
+            z = event.z;
+          });
+        });
       });
     }); //get the sensor data and set then to the data types
   }
@@ -52,6 +61,13 @@ class _PocketModeState extends State<PocketMode> {
                   style: TextStyle(fontSize: 20),
                 )
               : Text("R.A.S", style: TextStyle(fontSize: 20)),
+          SizedBox(
+            height: Get.height * .02,
+          ),
+          /*valeur fixé à deux chiffres après la virgule*/
+          Text("X : " + x.toStringAsFixed(2), style: TextStyle(fontSize: 20.0)),
+          Text("Y : " + y.toStringAsFixed(2), style: TextStyle(fontSize: 20.0)),
+          Text("Z : " + z.toStringAsFixed(2), style: TextStyle(fontSize: 20.0)),
         ],
       ),
     );
