@@ -41,6 +41,7 @@ dependencies:
   pull_to_refresh: ^2.0.0
   sensors: ^2.0.3
   all_sensors2:
+  accordion: ^2.1.1
 
 dev_dependencies:
   flutter_test:
