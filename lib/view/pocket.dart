@@ -49,10 +49,9 @@ class _PocketModeState extends State<PocketMode> {
           (_proximityValues)
               ? Text(
                   "Il y a un corps à proximité.",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(fontSize: 20),
                 )
-              : Text("R.A.S",
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              : Text("R.A.S", style: TextStyle(fontSize: 20)),
         ],
       ),
     );
