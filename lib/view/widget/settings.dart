@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, import_of_legacy_library_into_null_safe
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:get/get.dart';
@@ -13,67 +13,203 @@ class AppSettings extends StatefulWidget {
 }
 
 class _AppSettingsState extends State<AppSettings> {
+
+  List<bool> isSwitched = [false, false, false, false];
+  List<bool> opened = [false, false, false, false];
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: SafeArea(
         child: Container(
           padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.035
+            horizontal: MediaQuery.of(context).size.width * 0.03
           ),
           color: Color(0xfff2fbff),
-          child: ListView(
-            padding: EdgeInsets.zero, 
+          child: Column(
             children: [
               Container(
                 alignment: Alignment.topRight,
                 margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.02
+                  top: MediaQuery.of(context).size.height * 0.01
                 ),
-                child:  IconButton(icon: Icon(Icons.favorite_border), onPressed: () {},),
+                child:  IconButton(icon: Icon(Icons.close, color: Colors.blueGrey,), onPressed: () {Navigator.pop(context);},),
               ),
-              Accordion(
-                headerBackgroundColor: Colors.white,
-                contentBorderColor: Colors.white,
-                contentBorderWidth: 0,
-                headerBorderRadius: 10,
-                contentBorderRadius: 40,
-                headerPadding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height * 0.020,
-                  horizontal: MediaQuery.of(context).size.width * 0.05
-                ),
-                maxOpenSections: 1,
-                leftIcon: Icon(Icons.settings, color: Colors.blueGrey),
-                rightIcon: Icon(Icons.keyboard_arrow_down, color: Colors.blueGrey, size: 18),
-                children: [
-                  AccordionSection(
-                    isOpen: false,
-                    header: Text('Fonctionnalité 1', style: TextStyle(color: Colors.blueGrey, fontSize: 15)),
-                    content: Column(
-                      children: [
-                        Divider(color: Colors.blueGrey, thickness: 0.2,),
-                        Text('Description de la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 13)),
-                      ],
+              SingleChildScrollView(
+                padding: EdgeInsets.zero, 
+                child: Accordion(
+                  headerBackgroundColor: Colors.white,
+                  contentBorderColor: Colors.white,
+                  contentBorderWidth: 0,
+                  headerBorderRadius: 10,
+                  contentBorderRadius: 40,
+                  headerPadding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height * 0.020,
+                    horizontal: MediaQuery.of(context).size.width * 0.05
+                  ),
+                  maxOpenSections: 2,
+                  rightIcon: Icon(Icons.keyboard_arrow_down, color: Colors.blueGrey, size: 18),
+                  children: [
+                    AccordionSection(
+                      leftIcon: CircleAvatar(
+                        radius: 15,
+                        backgroundColor:
+                        const Color(0xff0ec761),
+                        child: const Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                      ),
+                      isOpen: opened[0],
+                      header: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Fonctionnalité 1', style: TextStyle(color: Colors.blueGrey, fontSize: 14.5)),
+                          Switch(
+                            value: isSwitched[0],
+                            activeColor: Color(0xff0ec761),
+                            onChanged: (value) {
+                              setState(() {
+                                isSwitched[0] = value ;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                      content: Column(
+                        children: [
+                          Divider(color: Colors.blueGrey, thickness: 0.2,),
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.01
+                            ),
+                            child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 14))
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    header: Text('Fonctionnalité 2', style: TextStyle(color: Colors.blueGrey, fontSize: 15)),
-                    content: Icon(Icons.airline_seat_flat, size: 120, color: Colors.blue[200]),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    header: Text('Fonctionnalité 3', style: TextStyle(color: Colors.blueGrey, fontSize: 15)),
-                    content: Icon(Icons.airplay, size: 70, color: Colors.green[200]),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    header: Text('Fonctionnalité 4', style: TextStyle(color: Colors.blueGrey, fontSize: 15)),
-                    content: Icon(Icons.airplay, size: 70, color: Colors.green[200]),
-                  ),
-                ],
+                    AccordionSection(
+                      leftIcon: CircleAvatar(
+                        radius: 15,
+                        backgroundColor:
+                        const Color(0xff50a3eb),
+                        child: const Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                      ),
+                      isOpen: false,
+                      header: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Fonctionnalité 2', style: TextStyle(color: Colors.blueGrey, fontSize: 14.5)),
+                          Switch(
+                            value: isSwitched[1],
+                            activeColor: Color(0xff0ec761),
+                            onChanged: (value) {
+                              setState(() {
+                                isSwitched[1] = value;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                      content: Column(
+                        children: [
+                          Divider(color: Colors.blueGrey, thickness: 0.2,),
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.01
+                            ),
+                            child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 14))
+                          ),
+                        ],
+                      ),
+                    ),
+                    AccordionSection(
+                      leftIcon: CircleAvatar(
+                        radius: 15,
+                        backgroundColor:
+                        const Color(0xffaa69f0),
+                        child: const Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                      ),
+                      isOpen: false,
+                      header: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Fonctionnalité 3', style: TextStyle(color: Colors.blueGrey, fontSize: 14.5)),
+                          Switch(
+                            value: isSwitched[2],
+                            activeColor: Color(0xff0ec761),
+                            onChanged: (value) {
+                              setState(() {
+                                isSwitched[2] = value;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                      content: Column(
+                        children: [
+                          Divider(color: Colors.blueGrey, thickness: 0.2,),
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.01
+                            ),
+                            child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 14))
+                          ),
+                        ],
+                      ),
+                    ),
+                    AccordionSection(
+                      leftIcon: CircleAvatar(
+                        radius: 15,
+                        backgroundColor:
+                        const Color(0xffe84a3f),
+                        child: const Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                      ),
+                      isOpen: false,
+                      header: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Fonctionnalité 4', style: TextStyle(color: Colors.blueGrey, fontSize: 14.5)),
+                          Switch(
+                            value: isSwitched[3],
+                            activeColor: Color(0xff0ec761),
+                            onChanged: (value) {
+                              setState(() {
+                                isSwitched[3] = value;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                      content: Column(
+                        children: [
+                          Divider(color: Colors.blueGrey, thickness: 0.2,),
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.01
+                            ),
+                            child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 14))
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ]
+            ],
           ),
         )
       )
