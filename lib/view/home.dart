@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
         key: _key,
         drawer: drawer,
         body: Container(
-          padding: EdgeInsets.only(top: Get.height * .04),
+          padding: EdgeInsets.only(top: Get.height * .01),
           decoration: BoxDecoration(
               gradient: LinearGradient(
             begin: Alignment.topCenter,
