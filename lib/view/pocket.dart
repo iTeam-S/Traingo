@@ -1,6 +1,8 @@
 import 'package:all_sensors2/all_sensors2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:traingo/algo.dart';
+//import 'package:traingo/algo.dart';
 
 class PocketMode extends StatefulWidget {
   const PocketMode({Key? key}) : super(key: key);
@@ -11,28 +13,31 @@ class PocketMode extends StatefulWidget {
 
 class _PocketModeState extends State<PocketMode> {
   bool _proximityValues = false;
-  late double x, y, z;
+  double xu = 0.0, yu = 0.0, zu = 0.0;
+
   @override
   void initState() {
     super.initState();
+    accelerometerEvents!.listen((AccelerometerEvent event) {
+      setState(() {
+        xu = double.parse((event.x).toStringAsFixed(2));
+        yu = double.parse((event.y).toStringAsFixed(2));
+        zu = double.parse((event.z).toStringAsFixed(2));
+        print("$xu,$yu,$zu");
+      });
+    });
     proximityEvents!.listen((ProximityEvent event) {
       setState(() {
         // event.getValue return true or false
         _proximityValues = event.getValue();
         print(_proximityValues);
-        accelerometerEvents!.listen((AccelerometerEvent event) {
-          setState(() {
-            x = event.x;
-            y = event.y;
-            z = event.z;
-          });
-        });
       });
     }); //get the sensor data and set then to the data types
   }
 
   @override
   Widget build(BuildContext context) {
+    Compare(xu, yu, zu);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(),
@@ -65,9 +70,30 @@ class _PocketModeState extends State<PocketMode> {
             height: Get.height * .02,
           ),
           /*valeur fixé à deux chiffres après la virgule*/
-          Text("X : " + x.toStringAsFixed(2), style: TextStyle(fontSize: 20.0)),
-          Text("Y : " + y.toStringAsFixed(2), style: TextStyle(fontSize: 20.0)),
-          Text("Z : " + z.toStringAsFixed(2), style: TextStyle(fontSize: 20.0)),
+          Text("X : $xu", style: TextStyle(fontSize: 20.0)),
+          Text("Y : $yu", style: TextStyle(fontSize: 20.0)),
+          Text("Z : $zu", style: TextStyle(fontSize: 20.0)),
+          Divider(
+            height: 10,
+          ),
+          Text("Postion actuel du phone:", style: TextStyle(fontSize: 20.0)),
+          SizedBox(
+            height: 5,
+          ),
+          if (Compare(xu, yu, zu) == 1)
+            Text("position normal")
+          else if (Compare(xu, yu, zu) == 2)
+            Text("position renversé à plat ventre")
+          else if (Compare(xu, yu, zu) == 3)
+            Text("position sur le coté droit")
+          else if (Compare(xu, yu, zu) == 4)
+            Text("position sur le coté gauche (coté btt volume)")
+          else if (Compare(xu, yu, zu) == 5)
+            Text("position mitsangana")
+          else if (Compare(xu, yu, zu) == 6)
+            Text("position mitsangana")
+          else
+            Text("404")
         ],
       ),
     );
@@ -81,9 +107,12 @@ class _PocketModeState extends State<PocketMode> {
         2) After 5 seconds grace period, use the DevicePolicyManager to lock the phone.
 
         bon, supposons qu'un phone peut: 
-                -rouler de gauche à droite ou l'inverse (Y)
-                -tourner sur elle même de gauche à droite ou l'inverse (Z)
-                -rouler avant vers l'arrière ou l'inverse (X)
+                -rouler de gauche à droite ou l'inverse (position Y)
+                -tourner sur elle même de gauche à droite ou l'inverse (position Z)
+                -rouler avant vers l'arrière ou l'inverse (position X)
         Et qu'on peut definir si le phone est à proximité d'un objet ou pas (face à l'écran) 
-        avec plus ou moins 1.5cm de detection
+        avec plus ou moins 1.5cm de detection 0...
+        Donc si on connais la position initial du phone [après le 5 secondes ET _proximityValues=True] ,
+        on peut facilement savoir si le phone est entrain de bouger ou non.
          */
+        
