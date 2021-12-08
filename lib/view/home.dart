@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Container(
           padding: EdgeInsets.only(top: Get.height * .01),
           decoration: BoxDecoration(
-              gradient: LinearGradient(
+            gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomLeft,
             colors: [

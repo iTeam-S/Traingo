@@ -15,40 +15,49 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomLeft,
             colors: [
-              Color(0xffeb3446),
-              Color(0xffeb3446),
+              Color(0xffffffff),
+              Color(0xffffffff),
             ],
-          )
-        ),
+          )),
         alignment: Alignment.center,
         // color: Color(0xffeb3446),
         child: Column(
           children: [
-            // Container(
-            //   margin: EdgeInsets.only(
-            //       top: MediaQuery.of(context).size.height * 0.32
-            //   ),
-            //   height: MediaQuery.of(context).size.height * 0.30,
-            //   child: Image.asset('assets/images/logo_b.png')
-            // ),
             Container(
               margin: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.275
+                top: MediaQuery.of(context).size.height * 0.38
+              ),
+              height: MediaQuery.of(context).size.height * 0.30,
+              child: Text(
+                "Traingo",
+                style: TextStyle(
+                  color: Color(0xff0ec761),
+                  fontSize: 60,
+                  fontFamily: "ProductSans",
+                  fontWeight: FontWeight.bold
+                ),
+              )
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height * 0.24
               ),
               child: Shimmer.fromColors(
-                baseColor: const Color(0xffffffff),
-                highlightColor: Color(0xff0ec761),
+                baseColor: Colors.grey.shade400,
+                highlightColor:  Colors.grey,
                 period: Duration(seconds: 2),
                 child: Text(
-                  "Traingo",
+                  "From iTeam-\$",
                   style: TextStyle(
+                    color: Colors.blueGrey,
                     fontSize: 16,
                     fontFamily: "ProductSans",
+                    fontWeight: FontWeight.bold
                   ),
                 )
               )
