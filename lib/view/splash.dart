@@ -33,6 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 top: MediaQuery.of(context).size.height * 0.38
               ),
               height: MediaQuery.of(context).size.height * 0.30,
+              alignment: Alignment.center,
               child: Text(
                 "Traingo",
                 style: TextStyle(
@@ -45,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Container(
               margin: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.24
+                top: MediaQuery.of(context).size.height * 0.26
               ),
               child: Shimmer.fromColors(
                 baseColor: Colors.grey.shade400,

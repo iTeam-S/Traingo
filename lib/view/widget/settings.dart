@@ -39,7 +39,7 @@ class _AppSettingsState extends State<AppSettings> {
                 padding: EdgeInsets.zero, 
                 // ignore: sized_box_for_whitespace
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.9,
+                  height: MediaQuery.of(context).size.height * 0.85,
                   child: Accordion(
                     headerBackgroundColor: Colors.white,
                     contentBorderColor: Colors.white,

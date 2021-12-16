@@ -43,6 +43,7 @@ dependencies:
   all_sensors2:
   accordion: ^2.1.1
   custom_switch: ^0.0.1
+  avatar_glow: ^2.0.2
 
 dev_dependencies:
   flutter_test:
