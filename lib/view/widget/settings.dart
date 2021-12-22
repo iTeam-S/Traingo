@@ -25,7 +25,7 @@ class _AppSettingsState extends State<AppSettings> {
           padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * 0.03
           ),
-          color: Color(0xfff2fbff),
+          color: Color(0xff0d131c),
           child: Column(
             children: [
               Container(
@@ -33,7 +33,7 @@ class _AppSettingsState extends State<AppSettings> {
                 margin: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height * 0.01
                 ),
-                child:  IconButton(icon: Icon(Icons.close, color: Colors.blueGrey,), onPressed: () {Navigator.pop(context);},),
+                child:  IconButton(icon: Icon(Icons.close, color: Colors.white70,), onPressed: () {Navigator.pop(context);},),
               ),
               SingleChildScrollView(
                 padding: EdgeInsets.zero, 
@@ -41,8 +41,9 @@ class _AppSettingsState extends State<AppSettings> {
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.85,
                   child: Accordion(
-                    headerBackgroundColor: Colors.white,
-                    contentBorderColor: Colors.white,
+                    contentBackgroundColor:Colors.blueGrey[600],
+                    headerBackgroundColor: Color(0xff131d2b),
+                    contentBorderColor: Color(0xff131d2b),
                     contentBorderWidth: 0,
                     headerBorderRadius: 10,
                     contentBorderRadius: 40,
@@ -51,7 +52,7 @@ class _AppSettingsState extends State<AppSettings> {
                       horizontal: MediaQuery.of(context).size.width * 0.05
                     ),
                     maxOpenSections: 4,
-                    rightIcon: Icon(Icons.keyboard_arrow_down, color: Colors.blueGrey, size: 18),
+                    rightIcon: Icon(Icons.keyboard_arrow_down, color: Colors.white54, size: 18),
                     children: [
                       AccordionSection(
                         leftIcon: CircleAvatar(
@@ -68,7 +69,7 @@ class _AppSettingsState extends State<AppSettings> {
                         header: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Fonctionnalité 1', style: TextStyle(color: Colors.blueGrey, fontSize: 14.5)),
+                            Text('Fonctionnalité 1', style: TextStyle(color: Colors.white70, fontSize: 14.5)),
                             Switch(
                               value: isSwitched[0],
                               activeColor: Color(0xff0ec761),
@@ -90,7 +91,7 @@ class _AppSettingsState extends State<AppSettings> {
                               margin: EdgeInsets.only(
                                 top: MediaQuery.of(context).size.height * 0.01
                               ),
-                              child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 14))
+                              child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.white, fontSize: 14))
                             ),
                           ],
                         ),
@@ -110,7 +111,7 @@ class _AppSettingsState extends State<AppSettings> {
                         header: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Fonctionnalité 2', style: TextStyle(color: Colors.blueGrey, fontSize: 14.5)),
+                            Text('Fonctionnalité 2', style: TextStyle(color: Colors.white70, fontSize: 14.5)),
                             Switch(
                               value: isSwitched[1],
                               activeColor: Color(0xff0ec761),
@@ -130,7 +131,7 @@ class _AppSettingsState extends State<AppSettings> {
                               margin: EdgeInsets.only(
                                 top: MediaQuery.of(context).size.height * 0.01
                               ),
-                              child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 14))
+                              child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.white, fontSize: 14))
                             ),
                           ],
                         ),
@@ -150,7 +151,7 @@ class _AppSettingsState extends State<AppSettings> {
                         header: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Fonctionnalité 3', style: TextStyle(color: Colors.blueGrey, fontSize: 14.5)),
+                            Text('Fonctionnalité 3', style: TextStyle(color: Colors.white70, fontSize: 14.5)),
                             Switch(
                               value: isSwitched[2],
                               activeColor: Color(0xff0ec761),
@@ -170,7 +171,7 @@ class _AppSettingsState extends State<AppSettings> {
                               margin: EdgeInsets.only(
                                 top: MediaQuery.of(context).size.height * 0.01
                               ),
-                              child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 14))
+                              child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.white, fontSize: 14))
                             ),
                           ],
                         ),
@@ -190,7 +191,7 @@ class _AppSettingsState extends State<AppSettings> {
                         header: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Fonctionnalité 4', style: TextStyle(color: Colors.blueGrey, fontSize: 14.5)),
+                            Text('Fonctionnalité 4', style: TextStyle(color: Colors.white70, fontSize: 14.5)),
                             Switch(
                               value: isSwitched[3],
                               activeColor: Color(0xff0ec761),
@@ -210,7 +211,7 @@ class _AppSettingsState extends State<AppSettings> {
                               margin: EdgeInsets.only(
                                 top: MediaQuery.of(context).size.height * 0.01
                               ),
-                              child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.blueGrey, fontSize: 14))
+                              child: Text('Description de la fonctionnalité, ceci permet de connaitre la fonctionnalité', style: TextStyle(color: Colors.white, fontSize: 14))
                             ),
                           ],
                         ),

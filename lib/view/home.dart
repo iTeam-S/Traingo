@@ -31,8 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
               begin: Alignment.topCenter,
               end: Alignment.bottomLeft,
               colors: [
-                Color(0xff06151a),
-                Color(0xff09101c),
+                Color(0xff0d131c),
+                Color(0xff0d131c),
               ],
             )),
             alignment: Alignment.center,
@@ -62,25 +62,47 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ]),
                 Container(
-                  margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.835),
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.785),
                   child: Column(
                     children: [
                       Text(
-                        "Appuyer sur le bouton pour activer Traingo",
+                        "Appuyer sur le bouton ci-dessus pour activer Traingo",
                         style: TextStyle(
                             // fontWeight: FontWeight.bold,
                             fontSize: 13,
                             color: Color(0xffffffff)),
                         textAlign: TextAlign.center,
                       ),
-                      Text(
-                        "Modifier les paramètres",
-                        style: TextStyle(
-                            // fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                            color: Color(0xffffffff)),
-                        textAlign: TextAlign.center,
+                      Container(
+                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.015),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned.fill(
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: <Color>[
+                                        Color(0xff0ec761),
+                                        Color(0xff0ec761),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  padding: const EdgeInsets.all(15.0),
+                                  primary: Colors.white,
+                                  textStyle: const TextStyle(fontSize: 13),
+                                ),
+                                onPressed: () {},
+                                child: const Text('Modifier les paramètres', style: TextStyle( fontFamily: "ProductSans")),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
