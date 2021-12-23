@@ -37,6 +37,7 @@ dependencies:
   get: ^4.1.4
   get_storage:
   rounded_loading_button: ^2.0.5
+  syncfusion_flutter_gauges: ^18.2.44
   shimmer: ^2.0.0
   pull_to_refresh: ^2.0.0
   sensors: ^2.0.3
