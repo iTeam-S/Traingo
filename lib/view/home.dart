@@ -1,4 +1,5 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, import_of_legacy_library_into_null_safe
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, import_of_legacy_library_into_null_safe, unused_local_variable
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:traingo/view/widget/drawer.dart';
@@ -15,8 +16,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
+
+  double progressValue = 0;
+
+  loadButton() {
+    Timer _timer = Timer.periodic(const Duration(milliseconds: 10), (Timer _timer) {
+      setState(() {
+        progressValue+=1;
+        if (progressValue == 100) {
+          _timer.cancel();
+        }
+      });
+    });
+  }
 
   // double difference =  Get.height * 0.301 - Get.height * 0.255 ;
 
@@ -71,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ]
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {loadButton();},
                   child: Stack(
                     children: [
                       Container(
@@ -80,7 +95,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         alignment: Alignment.center,
                         child: CircleAvatar(
-                          
                           radius: 60,
                           backgroundColor: const Color(0xff131d2b),
                           child: const Icon(
@@ -114,21 +128,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               pointers: <GaugePointer>[
                                 RangePointer(
-                                    // value: progressValue,
-                                    width: 0.1,
+                                    value: progressValue,
+                                    width: 0.01,
                                     sizeUnit: GaugeSizeUnit.factor,
                                     enableAnimation: true,
-                                    animationDuration: 100,
+                                    animationDuration: 10,
                                     animationType: AnimationType.linear,
                                     cornerStyle: CornerStyle.startCurve,
                                     gradient: const SweepGradient(
                                       colors: <Color>[Color(0xFF00a9b5), Color(0xFFa4edeb)],
                                       stops: <double>[0.25, 0.75])),
                                 MarkerPointer(
-                                  // value: progressValue,
+                                  value: progressValue,
                                   markerType: MarkerType.circle,
                                   enableAnimation: true,
-                                  animationDuration: 100,
+                                  animationDuration: 10,
                                   animationType: AnimationType.linear,
                                   color: const Color(0xFF87e8e8),
                                 )
