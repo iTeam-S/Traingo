@@ -20,6 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
 
+  bool pass = true;
+
   double progressValue = 0;
 
   loadButton() {
@@ -31,6 +33,118 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       });
     });
+  }
+
+   restoreButton() {
+    Timer _timer = Timer.periodic(const Duration(milliseconds: 10), (Timer _timer) {
+      setState(() {
+        progressValue -= 1 ;
+        if (progressValue == 0) {
+          _timer.cancel();
+        }
+      });
+    });
+  }
+
+
+  Widget powerButton(double positionCircle){ 
+    return  progressValue == 100 ? 
+      InkWell(
+      onTap: () {progressValue == 100 ? restoreButton() : pass;},
+      child: Container(
+        margin: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.240
+        ),
+        alignment: Alignment.center,
+        child: AvatarGlow(
+          endRadius : 100,
+          duration: Duration(milliseconds:1500),
+          repeatPauseDuration: Duration(milliseconds:0),
+          startDelay: Duration(milliseconds:0),
+          showTwoGlows: true,
+          curve: Curves.linearToEaseOut,
+          glowColor: Color(0xff0ec761),
+          child: CircleAvatar(
+            radius: 60,
+            backgroundColor: const Color(0xff0ec761),
+            child: const Icon(
+              Icons.check,
+              color: Colors.white,
+              size: 50,
+            ),
+          ),
+        ),
+      ),
+    ) : 
+    InkWell(
+      onTap: () {progressValue == 0 ? loadButton() : pass;},
+      child: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.301
+            ),
+            alignment: Alignment.center,
+            child: CircleAvatar(
+              radius: 60,
+              backgroundColor: const Color(0xff131d2b),
+              child: const Icon(
+                Icons.power_settings_new,
+                color: Colors.white,
+                size: 50,
+              ),
+            ),
+          ),
+          Center(
+            // alignment: Alignment.center,
+            child: Container(
+            margin: EdgeInsets.only(
+              top: positionCircle,
+              // left: MediaQuery.of(context).size.width * 0.2525,
+            ),
+            height: 180,
+            width: 180,
+              child: SfRadialGauge(axes: <RadialAxis>[
+                RadialAxis(
+                  showLabels: false,
+                  showTicks: false,
+                  startAngle: 270,
+                  endAngle: 270,
+                  radiusFactor: 0.8,
+                  axisLineStyle: AxisLineStyle(
+                    thickness: 0.01,
+                    color: const Color.fromARGB(30, 0, 169, 181),
+                    thicknessUnit: GaugeSizeUnit.factor,
+                    cornerStyle: CornerStyle.startCurve,
+                  ),
+                  pointers: <GaugePointer>[
+                    RangePointer(
+                        value: progressValue,
+                        width: 0.01,
+                        sizeUnit: GaugeSizeUnit.factor,
+                        enableAnimation: true,
+                        animationDuration: 10,
+                        animationType: AnimationType.linear,
+                        cornerStyle: CornerStyle.startCurve,
+                        gradient: const SweepGradient(
+                          colors: <Color>[Color(0xFF00a9b5), Color(0xFFa4edeb)],
+                          stops: <double>[0.25, 0.75])),
+                    MarkerPointer(
+                      value: progressValue,
+                      markerType: MarkerType.circle,
+                      enableAnimation: true,
+                      animationDuration: 10,
+                      animationType: AnimationType.linear,
+                      color: const Color(0xFF87e8e8),
+                    )
+                  ],
+                ),
+              ]),
+            )
+          ),
+        ],
+      ),
+    );
   }
 
   // double difference =  Get.height * 0.301 - Get.height * 0.255 ;
@@ -85,77 +199,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ]
                 ),
-                InkWell(
-                  onTap: () {loadButton();},
-                  child: Stack(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.301
-                        ),
-                        alignment: Alignment.center,
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundColor: const Color(0xff131d2b),
-                          child: const Icon(
-                            Icons.power_settings_new,
-                            color: Colors.white,
-                            size: 50,
-                          ),
-                        ),
-                      ),
-                      Center(
-                        // alignment: Alignment.center,
-                        child: Container(
-                        margin: EdgeInsets.only(
-                          top: topCircle,
-                          // left: MediaQuery.of(context).size.width * 0.2525,
-                        ),
-                        height: 180,
-                        width: 180,
-                          child: SfRadialGauge(axes: <RadialAxis>[
-                            RadialAxis(
-                              showLabels: false,
-                              showTicks: false,
-                              startAngle: 270,
-                              endAngle: 270,
-                              radiusFactor: 0.8,
-                              axisLineStyle: AxisLineStyle(
-                                thickness: 0.01,
-                                color: const Color.fromARGB(30, 0, 169, 181),
-                                thicknessUnit: GaugeSizeUnit.factor,
-                                cornerStyle: CornerStyle.startCurve,
-                              ),
-                              pointers: <GaugePointer>[
-                                RangePointer(
-                                    value: progressValue,
-                                    width: 0.01,
-                                    sizeUnit: GaugeSizeUnit.factor,
-                                    enableAnimation: true,
-                                    animationDuration: 10,
-                                    animationType: AnimationType.linear,
-                                    cornerStyle: CornerStyle.startCurve,
-                                    gradient: const SweepGradient(
-                                      colors: <Color>[Color(0xFF00a9b5), Color(0xFFa4edeb)],
-                                      stops: <double>[0.25, 0.75])),
-                                MarkerPointer(
-                                  value: progressValue,
-                                  markerType: MarkerType.circle,
-                                  enableAnimation: true,
-                                  animationDuration: 10,
-                                  animationType: AnimationType.linear,
-                                  color: const Color(0xFF87e8e8),
-                                )
-                              ],
-                            ),
-                          ]),
-                        )
-                      ),
-                    ],
-                  ),
-                ),
+                powerButton(topCircle),
                 Container(
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.245),
+                  margin: progressValue != 100 ? 
+                    EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.245) :
+                    EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.228),
                   child: Column(
                     children: [
                       Text(
